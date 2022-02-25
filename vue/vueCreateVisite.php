@@ -10,7 +10,7 @@
                         Nombre d'entrées Adulte
                     </label>
                     <div class="col-6">
-                        <input class="form-control" type="number" min="0" value="<?php echo $nbAdultes?>" id="nbAdultes" name="nbAdultes">
+                        <input class="form-control" required type="number" min="0" value="<?php echo $nbAdultes?>" id="nbAdultes" name="nbAdultes">
                     </div>
                 </div>
                 <div class="row mb-1">
@@ -18,7 +18,7 @@
                         Nombre d'entrées Enfant
                     </label>
                     <div class="col-6">
-                        <input class="form-control" type="number" min="0" value="<?php echo $nbEnfants?>" id="nbEnfants" name="nbEnfants">
+                        <input class="form-control" required type="number" min="0" value="<?php echo $nbEnfants?>" id="nbEnfants" name="nbEnfants">
                     </div>
                 </div>
             </div>
@@ -38,14 +38,17 @@
         </div>
         <div class="row m-3">
             <div class="col-6 d-md-flex justify-content-md-end">
-                <button type="submit" formaction="./?action=create_visite" class="btn btn-primary">Calculer tarif</button>
+                <button type="submit" name="calculerTarif" class="btn btn-primary">Calculer tarif</button>
             </div>
             <div class="col-6 d-md-flex justify-content-md-start">
-                <button type="submit" formaction="./?action=confirm_visite" class="btn btn-primary">Valider</button>
+                <button type="submit" name="valider" class="btn btn-primary">Valider</button>
             </div>
         </div>
     </form>
 </div>
 <div class="row m-3 text-center">
     <p>A payer: <?php echo $tarif;?>€</p>
+</div>
+<div class="row m-3 text-center">
+    <p class="text-danger"><?php echo $message;?></p>
 </div>

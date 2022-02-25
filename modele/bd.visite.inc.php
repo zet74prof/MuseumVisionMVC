@@ -103,7 +103,7 @@ function getTarifVisite($nbAdultes, $nbEnfants, $expos) {
 }
 
 function addVisite($nbVisAd, $nbVisEnf, $expos) {
-    $resultat = -1;
+    $nextId = 0;
     try {
         $cnx = connexionPDO();
         $nextId = getNextVisiteId();
@@ -127,7 +127,7 @@ function addVisite($nbVisAd, $nbVisEnf, $expos) {
         print "Erreur !: " . $e->getMessage();
         die();
     }
-    return $resultat1+$resultat2;
+    return $nextId;
 }
 
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {

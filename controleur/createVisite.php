@@ -9,6 +9,8 @@ include_once "$racine/modele/bd.visite.inc.php";
 ;
 $checkedExpos = Array();
 $tarif = 0;
+$idVisite = 0;
+$message = "";
 if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
     $nbAdultes = $_POST["nbAdultes"];
     $nbEnfants = $_POST["nbEnfants"];
@@ -22,6 +24,17 @@ if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
             $tarifAdulte = getTarifAdulte($i);
             $tarifEnfant = getTarifEnfant($i);
             $tarif += $tarifAdulte * $nbAdultes + $tarifEnfant * $nbEnfants;
+        }
+    }
+    if (isset($_POST["valider"]))
+    {
+        if ($nbAdultes != 0 || $nbEnfants != 0 && $checkedExpos[0] != null)
+        {
+            $idVisite = addVisite($nbAdultes, $nbEnfants, $checkedExpos);
+        }
+        else
+        {
+            $message = "Vous devez ajouter au moins un adulte ou enfant et cocher au moins une exposition";
         }
     }
 }
@@ -40,7 +53,14 @@ $expos = getExpos();
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Nouvelle visite";
 include "$racine/vue/entete.html.php";
-include "$racine/vue/vueCreateVisite.php";
+if (isset($_POST["valider"]) && $message == "")
+{
+    include "$racine/vue/vueConfirmVisite.php";
+}
+else
+{
+    include "$racine/vue/vueCreateVisite.php";
+}
 include "$racine/vue/pied.html.php";
 
 
