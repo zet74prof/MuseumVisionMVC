@@ -28,7 +28,7 @@ if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
     }
     if (isset($_POST["valider"]))
     {
-        if ($nbAdultes != 0 || $nbEnfants != 0 && $checkedExpos[0] != null)
+        if (($nbAdultes != 0 || $nbEnfants != 0) && isset($checkedExpos[0]))
         {
             $idVisite = addVisite($nbAdultes, $nbEnfants, $checkedExpos);
         }
@@ -45,7 +45,7 @@ else
 }
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage
-$expos = getExpos();
+$expos = getExposActive();
 
 // traitement si necessaire des donnees recuperees
 ;

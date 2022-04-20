@@ -24,6 +24,24 @@ function getExpos() {
 
     try {
         $cnx = connexionPDO();
+        $req = $cnx->prepare("select * from exposition");
+        $req->execute();
+
+        while ($ligne = $req->fetch(PDO::FETCH_ASSOC)) {
+            $resultat[] = $ligne;
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+function getExposActive() {
+    $resultat = array();
+
+    try {
+        $cnx = connexionPDO();
         $req = $cnx->prepare("select * from exposition where active is true");
         $req->execute();
 

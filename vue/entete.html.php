@@ -22,7 +22,7 @@
                         <a class="nav-link" href="./?action=ongoing_visites">Visites en cours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?action=param">Paramétrage</a>
+                        <a class="nav-link" href="./?action=param">Paramétrage des expos</a>
                     </li>
                 </ul>
             </div>

@@ -130,6 +130,22 @@ function addVisite($nbVisAd, $nbVisEnf, $expos) {
     return $nextId;
 }
 
+function updtFinVisite($idVisite, $dateHeureFin) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("update visite set dateHeureDepart=:dateHeureDepart where id=:id");
+        $req->bindValue(':id', $idVisite, PDO::PARAM_INT);
+        $req->bindValue(':dateHeureDepart', $dateHeureFin, PDO::PARAM_STR);
+
+        $resultat = $req->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     // prog principal de test
     header('Content-Type:text/plain');
