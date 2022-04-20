@@ -20,7 +20,7 @@ if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
     {
         if (isset($_POST['expo'.$i]))
         {
-            $checkedExpos[]=$i;
+            $checkedExpos[]=strval($i);
             $tarifAdulte = getTarifAdulte($i);
             $tarifEnfant = getTarifEnfant($i);
             $tarif += $tarifAdulte * $nbAdultes + $tarifEnfant * $nbEnfants;
