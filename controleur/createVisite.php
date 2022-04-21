@@ -11,6 +11,8 @@ $checkedExpos = Array();
 $tarif = 0;
 $idVisite = 0;
 $message = "";
+$jauge = 10;
+$nbNisitesEnCours = count(getVisitesEnCours());
 if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
     $nbAdultes = $_POST["nbAdultes"];
     $nbEnfants = $_POST["nbEnfants"];
@@ -30,7 +32,14 @@ if (isset($_POST["nbAdultes"]) && isset($_POST["nbEnfants"])) {
     {
         if (($nbAdultes != 0 || $nbEnfants != 0) && isset($checkedExpos[0]))
         {
-            $idVisite = addVisite($nbAdultes, $nbEnfants, $checkedExpos);
+            if ($nbNisitesEnCours < $jauge)
+            {
+                $idVisite = addVisite($nbAdultes, $nbEnfants, $checkedExpos);
+            }
+            else
+            {
+                $message = "Jauge maximale attteinte - visite non créée";
+            }
         }
         else
         {

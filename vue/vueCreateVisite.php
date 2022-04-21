@@ -27,7 +27,7 @@
                     <?php foreach ($expos as $expo)
                     {?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" <?php if (in_array($expo['id'], $checkedExpos, true)){echo 'checked';} ?> value="checked" id="expo<?php echo $expo['id']?>" name="expo<?php echo $expo['id']?>">
+                        <input class="form-check-input" type="checkbox" <?php if (in_array($expo['id'], $checkedExpos, false)){echo 'checked';}?> id="expo<?php echo $expo['id']?>" name="expo<?php echo $expo['id']?>">
                         <label class="form-check-label" for="expo<?php echo $expo['id']?>">
                             <?php echo $expo['nomExpo'] ?>
                         </label>

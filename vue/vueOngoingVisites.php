@@ -2,7 +2,9 @@
     <h1>Visites en cours</h1>
 </div>
 <div class="row m-3">
-    Il y a <?=$nbVisitesEnCours?> visites en cours
+    <div class="alert alert-info" role="alert">
+        Il y a <?=$nbVisitesEnCours?> visites en cours
+    </div>
 </div>
 <div class="row m-3">
     <form method="post" action="./?action=ongoing_visites">
