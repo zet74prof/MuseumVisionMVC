@@ -2,8 +2,8 @@
 
 function connexionPDO() {
     $login = "root";
-    $mdp = "5MichelAnnecy";
-    $bd = "museum_vision";
+    $mdp = "&6HAUTdanslaFauré";
+    $bd = "Anibi";
     $serveur = "localhost";
 
     try {
